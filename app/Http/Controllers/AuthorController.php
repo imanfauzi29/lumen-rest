@@ -53,13 +53,15 @@ class AuthorController extends Controller
 
     public function getById($id)
     {
-        $data["status"] = "success";
-        $data["result"] = Author::find($id);
+        $data = Author::find($id);
 
+        if (!$data) {
+            return response()->json(["message" => "id error"]);
+        }
         log::info("data getted by id $id");
 
         return response()
-            ->json($data, 200)
+            ->json(["status" => "success", "result" => $data], 200)
             ->header("Content-Type", "application/json");
     }
 
