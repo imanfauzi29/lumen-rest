@@ -46,6 +46,6 @@ $router->group(['middleware' => 'jwt'], function () use ($router) {
         $router->get("post/{id}/author", "PostController@relAuthorById");
 
 
-        // $router->get("author/post/comment", "CommentController@allTable");
+        $router->get("author/post/comment", "CommentController@allTable");
     });
 });

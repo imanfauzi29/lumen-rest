@@ -111,7 +111,10 @@ class PostController extends Controller
 
     public function relAuthorById($id)
     {
-        // $byId = Post::find($id);
+        $byId = Post::find($id);
+        if(!$byId) {
+            return response()->json(["message" => "id not found!"]);
+        }
         $data = Post::where("id", $id)->with(array("author" => function ($query) {
             $query->select();
         }))->get();

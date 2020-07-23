@@ -72,9 +72,11 @@ $app->configure('app');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    //     App\Http\Middleware\ExampleMiddleware::class,
+    // Fruitcake\Cors\HandleCors::class,
+    App\Http\Middleware\CorsMiddleware::class
+]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
@@ -83,6 +85,7 @@ $app->configure('app');
 $app->routeMiddleware([
     'jwt' => App\Http\Middleware\jwtMiddleware::class
 ]);
+
 
 // $app->routeMiddleware([
 //     'agechecker' => App\Http\Middleware\AgeMiddleware::class,
@@ -100,6 +103,7 @@ $app->routeMiddleware([
 
 // $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
+// $app->register(Fruitcake\Cors\CorsServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
