@@ -57,6 +57,7 @@ class AuthorController extends Controller
         $data["result"] = Author::find($id);
 
         log::info("data getted by id $id");
+
         return response()
             ->json($data, 200)
             ->header("Content-Type", "application/json");
